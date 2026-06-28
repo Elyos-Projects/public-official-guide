@@ -1,0 +1,37 @@
+{
+  "id": "public-official-guide-guardrails-001",
+  "title": "Guardrail / public-duty policy specification (non-partisan, anti-evasion, anti-surveillance)",
+  "project": "public-official-guide",
+  "type": "design-spec",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["civic", "governance", "public-service", "ethics", "software"],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Public-Official-Guide adapts the Ofelia app's architecture (private long-horizon memory + specialized AI faculties + outcome tracking + briefing) but deliberately INVERTS its purpose: from optimizing one person's advantage to serving an official's fiduciary duty to constituents and the public interest. A tool that optimized an elected official's advantage would harm democracy, so misuse is the project's top risk and the guardrail / public-duty policy layer is a hard product requirement built FIRST — adversarially tested, not a disclaimer. This is the cold-start task that specifies that layer before any feature is built. No pilot office or credentialed expert reviewer is yet secured.",
+  "objective": "Write the authoritative guardrail / public-duty policy specification that all later code and content must implement and be tested against: the fiduciary-duty framing, the concrete refused-use set, the allowed public-service categories, the three enforcement points (intent classification, system policy, output screening), the refusal/redirect behavior, the adversarial test taxonomy, and the expert-review and 'informational, not legal advice' gates.",
+  "acceptanceCriteria": [
+    "Enumerates the refused-use set in concrete, testable terms: campaign/electioneering/partisan messaging, fundraising, opposition research, re-election optimization; evasion of open-meeting/public-records/ethics/disclosure law; constituent surveillance/profiling/targeting/manipulation; PR/optics/spin; and any autonomous action on the official's behalf",
+    "Defines the allowed public-service/duty/compliance categories and the fiduciary-duty (duty-over-optics, transparency-positive) framing",
+    "Specifies three enforcement points - input intent classification, injected PUBLIC_DUTY_SYSTEM policy, and output screening - and requires server-side, injection-resistant enforcement that user/document content cannot override",
+    "Defines the refusal behavior: refuse the offending part, explain in public-duty terms, and offer a lawful/transparent alternative where one exists",
+    "Defines the adversarial test taxonomy the red-team suite must cover (multiple phrasings + prompt-injection per refused category) and the 100%-refused / zero-bypass target",
+    "Mandates the persistent 'informational, not legal advice' labeling and the credentialed-expert sign-off gate for any duty/compliance content",
+    "Reviewed and signed off by a credentialed government-ethics professional and/or licensed attorney (recorded in the reviewers ledger)"
+  ],
+  "resources": [
+    "planning/projects/public-official-guide/PLAN.md",
+    "governance/proposals/public-official-guide.md",
+    "CLAUDE.md",
+    "docs/good-deed-definition.md",
+    "packages/schema/src/schemas.ts",
+    "C:\\code\\Ofelia/src/lib/faculties/guardrails.ts"
+  ],
+  "output": "A reviewed policy-specification document (the guardrail / public-duty charter) defining the refused-use set, allowed categories, three enforcement points, refusal/redirect behavior, adversarial test taxonomy, and review/labeling gates - the contract that public-official-guide-guardrails-003 (policy layer) and public-official-guide-redteam-004 (red-team suite) implement and verify.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}
