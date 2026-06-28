@@ -1,6 +1,6 @@
 # Public-Official-Guide — PLAN.md
 
-> Status: Draft · Version: 0.1.0 · Last updated: 2026-06-28 · Owner: TBD (maintainer) · Lane: donated
+> Status: Draft · Version: 0.2.0 · Last updated: 2026-06-28 · Owner: TBD (maintainer) · Lane: donated
 
 A non-partisan, open-source AI guide that helps public and elected officials — especially small,
 under-resourced local offices with no staff — understand and fulfill their statutory duties, serve
@@ -45,6 +45,19 @@ marked `TO BE SECURED` with `verifiedNeed: false` until a real official adopts t
 project is not "shipped" on merge; it is shipped only when a real office uses it to fulfill a duty
 or improve a constituent outcome, with the guardrails independently verified.
 
+**Partner-acquisition plan (dated) and build-vs-mothball decision rule.** Rather than an open-ended
+`TBD`, outreach is time-boxed against the build: by **2026-08-31** the pilot jurisdiction is
+selected (criteria in *Open questions*) and ≥ 3 candidate partners (municipal league, clerks'
+association, or good-government NGO) are in active conversation; by **2026-10-31** a credentialed
+expert reviewer is secured (M2 gate); by **2026-12-31** a pilot office/steward is secured (M5 gate).
+**Decision rule:** if no credentialed expert is secured by the M2 entry date, M2 content work does
+not start and the project holds at M1 (platform + guardrails). If no pilot office is secured by
+**2027-03-31** (≈ M4 completion), the project does **not** ship blindly: it either (a) **pivots** the
+last-mile beneficiary (e.g., hand the guardrailed platform + one illustrative jurisdiction to a
+public-administration program as a teaching/reference deed) or (b) **mothballs** — archived,
+maintenance-only, no further HIGH-tier content — with the decision recorded in governance. The
+illustrative-jurisdiction build remains valuable as a reference artifact in either case.
+
 ---
 
 ## Problem & beneficiaries
@@ -72,7 +85,13 @@ counties, or clerks' association; a nonpartisan good-government NGO (e.g., a sta
 ethics/transparency organization); or a university public-administration / government-ethics
 program willing to provide credentialed review. Until one is secured, the project builds the
 agent-neutral platform, the guardrail layer, and one *illustrative* jurisdiction's content for
-review, and marks all delivery/adoption work `TO BE SECURED`.
+review, and marks all delivery/adoption work `TO BE SECURED`. Outreach is **dated, not open-ended**:
+pilot jurisdiction selected by 2026-08-31, ≥ 3 candidate partners in conversation by 2026-08-31,
+credentialed expert secured by 2026-10-31, pilot office/steward by 2026-12-31 (see the
+partner-acquisition plan in the executive summary). A **build-vs-mothball/pivot decision rule**
+governs what happens if those dates slip (executive summary and *Risks*): hold at M1 without an
+expert, and pivot the last-mile beneficiary or mothball to maintenance-only if no pilot is secured
+by ~2027-03-31 — rather than shipping to no real beneficiary.
 
 ---
 
@@ -113,13 +132,16 @@ Outcome-centric, beneficiary-first. Vanity metrics (DAU, sessions) are explicitl
 
 | Metric | Baseline | Target (pilot) | How measured |
 |---|---|---|---|
-| Guardrail refusal rate on the misuse red-team suite | none | 100% of suite refused/redirected; 0 known bypasses | Automated adversarial eval in CI + independent reviewer audit |
+| Guardrail refusal rate on the misuse red-team suite | none | reported as **refused/total at version N** (e.g. "318/318 at v0.3.0"), with a per-version changelog; **≥ 8 cases per refused category** (multiple phrasings + injection); 100% refused/redirected | Automated adversarial eval in CI + independent reviewer audit |
+| Newly-found bypass vectors converted to regression cases | n/a | 100% within **1 release** of discovery; suite size is non-decreasing across versions | Red-team changelog diff; CI suite-count check |
+| Lawful-alternative redirect coverage on evasion-category refusals | n/a | 100% of evasion-category refusals emit a **correct, cited lawful-process pointer** (not a bare "no") | Red-team assertion on redirect content + expert spot-check |
 | Duty/compliance claims sourced to primary law | n/a | 100% of shipped claims carry a primary-source citation | Expert review checklist; citation-coverage test |
 | Expert sign-off before duty/compliance content ships | n/a | 100% of HIGH-tier content has recorded credentialed sign-off | Governance log |
+| Stale-content containment | n/a | 0 claims served past their `validUntil` without an auto-flag/withhold and re-sign-off | Staleness test against `lastVerified`/`validUntil`; runtime audit |
 | Memory-grounded vs. blank-slate quality delta (eval) | n/a | grounded clearly beats blank-slate on accuracy + citation | LLM-judge eval harness (groundedness, accuracy, fit) |
 | Constituent cases moved to resolution by a pilot official | 0 | ≥ 10 cases tracked to a recorded outcome in pilot | In-app outcome tracking (with official's confirmation) |
 | Documented duty/compliance improvements attributable to use | 0 | ≥ 3 concrete instances (e.g., a flagged COI disclosed, a records-retention gap fixed) | Pilot official's attested log |
-| Constituent PII footprint | n/a | minimized + encrypted at rest; retention/deletion enforced | Privacy review + data-retention tests |
+| Constituent PII footprint | n/a | minimized + encrypted at rest; **default retention windows + deletion SLA met**; records-law-exempt casework handled per the records schedule | Privacy review + data-retention/deletion-SLA tests |
 
 The **defining success outcome** (Definition of Shipped): a real official/office adopts the tool
 and demonstrably uses it to fulfill a duty more completely or improve a constituent outcome, with
@@ -163,6 +185,13 @@ public-duty terms, and where possible offers a lawful, transparent alternative (
 minimize this records request, but here is how the public-records process works and who can advise
 you").
 
+The **lawful-alternative redirect is the project's ethical differentiator**, not a nicety, so it is
+held to explicit acceptance criteria and a coverage metric (see *Success metrics*): for every
+**evasion-category** refusal the red-team suite asserts the response contains a **correct, cited
+lawful-process pointer** (the actual transparency/ethics process and the right office — e.g., the
+public-records request procedure or the ethics board), not a bare refusal. A refusal that fails to
+emit a correct cited redirect is a test failure, the same as a bypass.
+
 ---
 
 ## Solution approach & architecture
@@ -180,13 +209,20 @@ vs MIT — open question)**; civic content **CC-BY-4.0**.
    subsystem, not a prompt suffix. Three enforcement points:
    - *Intent classification*: an input classifier tags requests against a public-duty policy
      taxonomy (allowed service/duty/compliance vs. refused campaign/evasion/surveillance/optics).
-     Refused categories never reach a faculty.
+     Refused categories never reach a faculty. The safety-relevant target is the **false-negative
+     rate** (a refused-category request wrongly allowed): **< 1% on the red-team suite, with 0
+     tolerated for the highest-severity categories** (evasion, surveillance/targeting). The
+     classifier is **fail-closed**: when its confidence is below threshold or the intent is
+     ambiguous, the default is **refuse-and-explain** (with a lawful-alternative pointer) rather than
+     allow — under-blocking is treated as the dangerous error, over-blocking as a recoverable one.
    - *System policy*: a `PUBLIC_DUTY_SYSTEM` charter injected into every faculty prompt establishing
      fiduciary-duty framing, non-partisanship, transparency-positive defaults, and hard refusals.
-   - *Output screening*: post-generation screening for partisan/targeting/evasion leakage; flags
-     route to a review queue and block delivery. All refusals and flags are logged (without storing
-     the sensitive content) for audit. This layer ships with its own adversarial red-team suite run
-     in CI; a regression that bypasses a refusal **fails the build**.
+   - *Output screening*: an **independent** post-generation screen (not sharing the input
+     classifier's logic, so it catches what the classifier misses) for partisan/targeting/evasion
+     leakage — **defense-in-depth**, on the assumption the input classifier will occasionally
+     false-negative. Flags route to a review queue and block delivery. All refusals and flags are
+     logged (without storing the sensitive content) for audit. This layer ships with its own
+     adversarial red-team suite run in CI; a regression that bypasses a refusal **fails the build**.
 
 2. **Imprint — office memory layer (`lib/imprint`).** The inverse of Ofelia's personal memory: it
    stores the *office's* working memory, not a person's leverage. Entities/records: Duties,
@@ -247,6 +283,17 @@ jurisdiction, citation, retrieval date, URL, license/legal-status note).
 provenance + verified legal status). The Duties & Roles and Ethics & Compliance faculties may not
 surface a claim without an attached source; a citation-coverage test enforces this.
 
+**Staleness is fail-safe, not best-effort.** Every `Source` carries a **`lastVerified`** date and a
+**`validUntil`** (derived from a per-source-type **review interval** — e.g., statutes re-verified
+annually, ethics advisory opinions and retention schedules on a shorter cadence). At **runtime**, a
+claim whose backing source is **past its `validUntil`** is **not served as current**: the faculty
+either **auto-flags** it ("this citation is past its review window — verify before relying") or
+**withholds** the claim for HIGH-severity surfaces, and routes the source into the re-verification
+queue. A stale claim cannot return to normal service until a reviewer re-verifies it and an expert
+**re-signs-off**, which writes a fresh `lastVerified`/`validUntil`. This makes the common failure
+mode (law changed; content silently went stale) a visible, gated event rather than a silent error,
+and is checked by a staleness test (see *Success metrics*).
+
 **Output licensing.** Code: **TBD — AGPL-3.0 vs MIT (open question;** AGPL better protects an open
 civic commons from closed re-hosting, MIT maximizes adoption/reuse — needs a governance decision).
 Civic content/datasets: **CC-BY-4.0** (attribution to primary sources preserved). Docs: CC-BY-4.0.
@@ -260,6 +307,20 @@ is required before any real PII is stored. Constituent data is **never** used fo
 targeting, surveillance, training, or any non-service purpose — enforced by the guardrail layer and
 the schema. No secrets, tokens, or PII are written to logs, receipts, or committed files (Elyos
 rule).
+
+**Resolving the PII-minimization vs. records-law collision.** Privacy minimization and public
+records-retention law pull in opposite directions, so the policy is explicit rather than
+contradictory. Default rule: non-records constituent data (e.g., transient service notes,
+auto-minimizable contact details) carries a **default retention window** (proposal: **24 months**
+from case closure, expert-confirmable per jurisdiction) after which it is auto-minimized/purged, and
+constituent/official deletion requests are honored within a **deletion SLA (proposal: 30 days)**.
+**Exemption:** casework records that are themselves **subject to a public-records retention schedule**
+(some constituent communications are public records by law) are **EXEMPT from deletion/auto-purge**
+and are instead retained, classified, and dispositioned **per the applicable records schedule** —
+never silently deleted to satisfy a privacy request, and never quietly kept past their schedule
+either. Each record is tagged `recordsLawHold: true|false` at creation (expert-reviewed mapping), so
+the deletion path and the retention job both know which regime applies. Concrete windows and the SLA
+are confirmed with the credentialed expert for the pilot jurisdiction.
 
 **Attribution.** Civic content cites primary sources; redistribution preserves attribution per
 CC-BY. Expert reviewers are credited (with consent) in a reviewers ledger.
@@ -304,20 +365,27 @@ adoption last and gated on a secured partner.
   *Goal:* the safety subsystem and an agent-neutral, multi-tenant skeleton exist before any feature.
   *Exit:* guardrail policy spec + policy layer merged with an adversarial red-team suite passing in
   CI (no known bypass); monorepo + CI green; tenant-scoped data model + at-rest encryption in place;
-  "informational, not legal advice" framing wired in.
+  "informational, not legal advice" framing wired in. **Pilot jurisdiction selected** (criteria in
+  *Open questions*) so M1+ content is built against a real corpus and reviewer profile.
 
 - **M1 — Imprint (office memory) + privacy foundation.**
   *Goal:* cited office-memory layer with privacy-first constituent model.
   *Exit:* duties/sources/decisions/cases/notes models + vector retrieval working on fixtures;
-  PII-minimized constituent schema (no political fields); encryption, retention, and deletion paths
-  implemented and tested; privacy review passed.
+  PII-minimized constituent schema (no political fields); encryption, retention (with `recordsLawHold`
+  exemption), and deletion paths implemented and tested; privacy review passed. **Kill-gate:** a
+  **minimal grounded-beats-blank-slate eval** (a handful of fixture scenarios) runs here as an early
+  **go/no-go** — if grounded+cited does not at least trend ahead of blank-slate on the small set, the
+  thesis is in doubt and HIGH-tier content investment (M2) pauses pending review, rather than waiting
+  for the full M4 eval to discover it.
 
 - **M2 — Duties & Roles + Ethics & Compliance (expert-gated content).**
-  *Goal:* the two HIGH-tier faculties, mounted behind guardrails, with one pilot jurisdiction's
-  cited content.
-  *Exit:* faculties return only source-cited claims (citation-coverage test passing); one
+  *Goal:* the two HIGH-tier faculties, mounted behind guardrails, with the selected pilot
+  jurisdiction's cited content.
+  *Exit:* faculties return only source-cited claims (citation-coverage test passing); the pilot
   jurisdiction's Duties & Roles and core Ethics/Compliance content drafted, primary-source-cited,
-  and **expert-signed-off**; guardrails verified on these surfaces.
+  and **expert-signed-off**; guardrails verified on these surfaces. **Kill-gate confirmed:** the
+  minimal grounded-vs-blank-slate eval, now run on real cited content, still shows grounded+cited
+  ahead — otherwise stop and reassess before M3.
 
 - **M3 — Casework, Briefings, briefing & outcomes.**
   *Goal:* service-oriented modules and the outcomes loop.
@@ -341,18 +409,22 @@ adoption last and gated on a secured partner.
   *Exit:* maintenance rotation + ops runbook + outcome dashboard; second-jurisdiction expansion
   process defined and expert-gated.
 
-Dependencies flow M0 → M1 → M2 → M3 → M4 → M5; M2 content tasks block on M0 guardrails and the
-secured expert reviewer; M5 blocks on a secured pilot office.
+Dependencies flow M0 → M1 → M2 → M3 → M4 → M5; the **pilot-jurisdiction decision is made in M0 and
+gates M2–M6** (it determines the content corpus, the source-reuse legality, and the reviewer
+profile); M2 content tasks block on M0 guardrails, the chosen jurisdiction, and the secured expert
+reviewer; M5 blocks on a secured pilot office.
 
 ---
 
 ## Work breakdown
 
-The itemized, schema-mapped backlog lives in **`TASKS.md`**: ~19 tasks across milestones M0–M6 plus
+The itemized, schema-mapped backlog lives in **`TASKS.md`**: ~21 tasks across milestones M0–M6 plus
 a future backlog, each mapped to the Elyos Task JSON schema, with per-task acceptance criteria for
 the most important items, milestone Definitions of Done, and a complete example Task JSON for the
 first M0 task (the guardrail policy spec). The first build item in TASKS.md is the guardrail / public-
-duty policy specification, reflecting its status as a hard product requirement.
+duty policy specification, reflecting its status as a hard product requirement; an early
+**pilot-jurisdiction selection** and a **minimal grounded-vs-blank-slate kill-gate eval** at M1 are
+sequenced so HIGH-tier content investment is gated on both a chosen corpus and an early thesis check.
 
 ---
 
@@ -364,6 +436,19 @@ duty policy specification, reflecting its status as a hard product requirement.
 - **Credentialed expert reviewers (HIGH tier): TO BE SECURED** — a government-ethics professional
   and/or a licensed attorney for the pilot jurisdiction; signs off all duty/compliance/jurisdiction
   content before it ships. Tracked in a reviewers ledger with credentials and consent.
+  **Independence / conflict-of-interest mechanism:** a reviewer **recuses** from any matter touching
+  an office they currently hold, seek, or advise in the pilot jurisdiction (and discloses other
+  material COIs). Sign-off is **version-scoped** — it attaches to a specific content version and
+  citation set and does **not** carry forward to later edits, which require re-sign-off (this dovetails
+  with the `lastVerified`/`validUntil` staleness model). **Name-use limits:** a reviewer's name and
+  credentials may be published in the reviewers ledger only for the specific versions they approved,
+  with consent, and may not be used to imply endorsement of the product as a whole or of content they
+  did not review. **Disagreement fallback (sole expert vs. maintainer):** the expert holds a **veto
+  on whether HIGH-tier content is legally/ethically safe to ship** — a maintainer cannot override a
+  "do not ship" on substance. If the maintainer disagrees, the content **does not ship**; the
+  disagreement is logged and escalated to **Elyos governance / a second credentialed reviewer** for a
+  tie-break, and where a single reviewer is a single point of failure the project prefers securing a
+  **second expert** before relying on contested content.
 - **Steward (last-mile owner): TO BE SECURED** — owns the pilot relationship and the
   hand-off/adoption that constitutes shipping.
 - **Partner / requestor: TO BE SECURED** — the pilot office/official or sponsoring civic
@@ -384,8 +469,10 @@ duty policy specification, reflecting its status as a hard product requirement.
   invert; public-domain legal corpora (e.g., Public.Resource.Org) for sourcing.
 - **Elyos pieces:** `packages/schema` (Task JSON), `CLAUDE.md` work rules + refusal guardrails,
   `docs/good-deed-definition.md` (risk tiers), Elyos governance for license/edge-case decisions.
-- **Human dependencies (critical path):** a secured credentialed expert reviewer (blocks M2 content)
-  and a secured pilot office/steward (blocks M5).
+- **Human/decision dependencies (critical path):** the **pilot-jurisdiction decision (made in M0,
+  gates M2–M6)** — it fixes the source corpus, source-reuse legality, and the reviewer profile; a
+  secured credentialed expert reviewer (blocks M2 content); and a secured pilot office/steward
+  (blocks M5).
 
 ---
 
@@ -394,10 +481,10 @@ duty policy specification, reflecting its status as a hard product requirement.
 | Risk | Likelihood | Impact | Mitigation | Owner |
 |---|---|---|---|---|
 | Tool is steered to partisan/campaign/electioneering use | High | Critical | Guardrail layer built first; intent classifier + system policy + output screening; adversarial red-team suite gates CI; independent reviewer audit; refused categories never reach a faculty | Guardrail reviewer |
-| Used to evade transparency/open-records/ethics law | Medium | Critical | Transparency-positive defaults; hard refusal of evasion requests with lawful-alternative redirect; red-team coverage; expert review of compliance content | Guardrail reviewer / Expert |
+| Used to evade transparency/open-records/ethics law | Medium | Critical | Transparency-positive defaults; hard refusal of evasion requests with a **correct, cited lawful-process redirect** (asserted by red-team coverage metric — a missing/incorrect redirect fails CI); expert review of compliance content | Guardrail reviewer / Expert |
 | Constituent data used for surveillance/profiling/targeting | Medium | Critical | Schema has no political/profiling fields; PII minimized + encrypted; retention + deletion; guardrail prohibits non-service use; privacy review gate | Maintainer / Steward |
-| Inaccurate or outdated jurisdiction-specific legal claim | High | High | Primary-source citation required (coverage test); credentialed expert sign-off before ship; "informational, not legal advice"; dated sources + review cadence | Expert reviewer |
-| No pilot office secured → cannot reach Definition of Shipped | High | High | Honest `TO BE SECURED`/`verifiedNeed:false`; build platform + one illustrative jurisdiction meanwhile; pursue municipal leagues / NGOs / academic partners early | Steward / Maintainer |
+| Inaccurate or outdated jurisdiction-specific legal claim | High | High | Primary-source citation required (coverage test); credentialed expert sign-off before ship; "informational, not legal advice"; **runtime staleness fail-safe** (`lastVerified`/`validUntil` auto-flags or withholds claims past their review window until re-signed-off) | Expert reviewer |
+| No pilot office secured → cannot reach Definition of Shipped | High | High | Honest `TO BE SECURED`/`verifiedNeed:false`; **dated partner-acquisition plan** (jurisdiction by 2026-08-31, expert by 2026-10-31, pilot by 2026-12-31) + an explicit **build-vs-mothball/pivot decision rule** at ~2027-03-31 (pivot last-mile beneficiary or mothball to maintenance-only rather than ship to no one); build platform + one illustrative jurisdiction meanwhile | Steward / Maintainer |
 | No credentialed expert secured → M2 content blocked | Medium | High | Recruit via public-administration programs, bar associations, ethics commissions; do not ship HIGH content without sign-off (hard gate) | Maintainer |
 | Source license/copyright on compiled codes/annotations | Medium | Medium | Verify + record reuse terms per source before shipping; prefer edict-of-government primary law; cite, don't copy proprietary annotations | Expert / Maintainer |
 | Over-reliance: official treats output as legal advice | Medium | High | Persistent "informational, not legal advice" labeling; route to counsel/ethics board; briefings inform not decide | Maintainer / Expert |
@@ -411,6 +498,25 @@ duty policy specification, reflecting its status as a hard product requirement.
 **Threat surface.** Misuse for partisan/political ends (primary threat); cross-tenant data leakage;
 exposure of constituent PII; exfiltration of sensitive case content; prompt-injection attempting to
 bypass the guardrail layer; secrets leakage.
+
+**Insider-misuse threat model (the primary adversary is the authenticated official).** Unlike a
+typical app where the attacker is an outsider, here the **legitimately authenticated user is the
+most likely adversary** of the guardrail — they want a refused outcome (campaign help, an evasion
+strategy, constituent targeting) and have unlimited authenticated attempts. The red-team suite and
+guardrail design therefore explicitly model **insider attacks**, not just injection:
+- **Multi-turn social engineering of the guardrail** — building rapport or context over several
+  turns, then asking for the refused thing once "trust" is established; the policy layer must be
+  **stateless w.r.t. trust** and re-evaluate each request on its own merits.
+- **Benign-looking decomposition** — splitting a refused task into individually innocuous sub-steps
+  (e.g., "list active voters by precinct" + "draft outreach copy" + "filter by issue stance") that
+  only compose into surveillance/campaign work; screening must consider **cumulative intent**, not
+  just the current message.
+- **Reframing / euphemism attacks** — relabeling campaign work as "community outreach,"
+  records-evasion as "managing the request queue," or opposition research as "stakeholder analysis"
+  to dodge the classifier; the taxonomy and red-team cases cover these paraphrases, and the
+  fail-closed default applies when a reframing is ambiguous.
+These insider vectors are first-class red-team categories with their own cases and regression
+coverage.
 
 **Controls.** Guardrail layer as a safety-critical, adversarially tested subsystem (the top
 control). Multi-tenant isolation — every row scoped by office/official, enforced in queries and
@@ -433,7 +539,11 @@ documented — and the tool never acts autonomously on the official's behalf.
 
 After delivery, a named **maintenance rotation** owns the platform; the **steward** owns the pilot
 relationship and outcome tracking. Civic content carries a **review cadence** (law changes; sources
-re-verified and re-dated) — expert sign-off is required again for material legal updates. Outcomes
+re-verified and re-dated) — expert sign-off is required again for material legal updates. The cadence
+is **enforced at runtime, not just on a calendar**: each source's `lastVerified`/`validUntil` drives
+the fail-safe staleness behavior (see *Provenance model*) so that a source past its review interval
+is **auto-flagged or withheld** until a reviewer re-verifies it and an expert re-signs-off — stale
+content cannot silently keep serving as current. Outcomes
 are tracked in-app (cases resolved, duty/compliance improvements, guardrail-audit status) and
 surfaced on an outcomes dashboard — **not** engagement metrics. Expansion to a second jurisdiction
 follows a documented, expert-gated process and only after the first is stable. The guardrail
@@ -445,9 +555,20 @@ red-team suite is maintained as living tests and expanded as new misuse vectors 
 
 - **Code license: AGPL-3.0 vs MIT?** AGPL protects an open civic commons from closed re-hosting;
   MIT maximizes reuse/adoption. Needs an Elyos governance decision. (Content: CC-BY-4.0.)
-- **Which pilot jurisdiction / office type first?** Choice drives the entire content corpus and
-  expert reviewer profile. TO BE SECURED.
-- **How is the credentialed expert reviewer compensated/credited,** and how is independence ensured?
+- **Which pilot jurisdiction / office type first? — decided in M0, not deferred,** because it gates
+  M2–M6 (content corpus, source-reuse legality, reviewer profile). Explicit **selection criteria**,
+  scored before M1 content work: (1) the jurisdiction's statutes/regulations are reusable under the
+  **edict-of-government** doctrine (primary law in the public domain; no copyrighted compiled-code /
+  annotation lock-in); (2) **high density of small, under-resourced offices** (the target
+  beneficiary); (3) an **available credentialed reviewer** (ethics professional / licensed attorney)
+  for that jurisdiction; (4) **manageable ethics-code complexity** (a tractable, well-documented
+  ethics/open-meeting/records regime rather than the most labyrinthine one). The specific
+  jurisdiction is still TO BE SECURED, but the **decision rule and deadline (by 2026-08-31) are
+  fixed**.
+- **How is the credentialed expert reviewer compensated/credited?** Crediting, version-scoped
+  sign-off, name-use limits, recusal/COI rules, and the disagreement fallback are now specified in
+  *Governance*; open item is the **compensation model** (volunteer vs. a future funded lane for
+  review hours with a hard budget cap — see below) without compromising independence.
 - **State-by-state source reuse terms** — which jurisdictions' compiled codes/annotations carry
   copyright constraints that limit reuse?
 - **Lane:** donated by default; is there a future funded lane for expert review hours (with a hard
