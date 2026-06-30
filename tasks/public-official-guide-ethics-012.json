@@ -1,0 +1,42 @@
+{
+  "id": "public-official-guide-ethics-012",
+  "title": "Ethics & Compliance faculty (COI/open-meeting/records/gift/resource-separation), informational",
+  "project": "public-official-guide",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": [
+    "civic",
+    "governance",
+    "software",
+    "legal",
+    "ethics"
+  ],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "The Ethics & Compliance faculty is the second core HIGH-tier faculty. It surfaces conflict-of-interest, open-meeting/sunshine, public-records, gift, campaign-vs-official-resource separation, and records-retention rules; flags when a contemplated action may violate them. It must be strictly informational (routes to the ethics board/counsel; never gives a verdict) and must refuse any request to help evade, delay, or minimize a transparency or ethics obligation -- redirecting to the lawful process instead. Every rule must be cited to primary law with expert sign-off before content ships.",
+  "objective": "Implement the Ethics & Compliance faculty behind the guardrail layer, surfacing COI/open-meeting/records/gift/resource-separation/records-retention rules with source citations, flagging potential violations, refusing evasion requests with correct cited lawful-process redirects, and labeled informational not legal advice.",
+  "acceptanceCriteria": [
+    "Faculty is mounted behind the guardrail layer (task 003)",
+    "Surfaces COI, open-meeting/sunshine, public-records, gift, campaign-vs-official-resource separation, and records-retention rules; flags when a contemplated action may cross one",
+    "Every surfaced rule carries a primary-source citation (citation-coverage test passes)",
+    "Refuses to help evade, delay, or minimize any transparency or ethics obligation; refusals include a correct, cited lawful-process pointer",
+    "All output labeled informational, not legal advice; routes to ethics board/counsel for binding determinations",
+    "Expert (ethics/legal) sign-off required before any real jurisdiction content is enabled through this faculty",
+    "CI green including red-team assertions on evasion-category refusals"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-guardrails-003.json",
+    "tasks/public-official-guide-imprint-006.json",
+    "tasks/public-official-guide-provenance-008.json"
+  ],
+  "output": "A merged PR implementing the Ethics & Compliance faculty behind the guardrail layer, with source-cited rule surfacing, violation flagging, evasion refusals with cited lawful-process redirects, and informational labeling.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT-or-AGPL-3.0-TBD"
+}

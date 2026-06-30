@@ -1,0 +1,39 @@
+{
+  "id": "public-official-guide-jurisdiction-023",
+  "title": "Second jurisdiction content pack",
+  "project": "public-official-guide",
+  "type": "data",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": [
+    "civic",
+    "governance",
+    "legal",
+    "data"
+  ],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "Expansion to a second jurisdiction is only appropriate after M6 is stable and the first jurisdiction is sustainably maintained. This task follows the full source-vetting + expert sign-off process from tasks 009 and 011/013, applied to a new jurisdiction. The selection criteria from task 000 apply. Adding a second jurisdiction before the first is stable or without expert sign-off is out of scope.",
+  "objective": "After M6 is stable, produce a second jurisdiction content pack (source vetting, duties/ethics content) following the full process: scored jurisdiction selection, source vetting + provenance recording, content drafting, and credentialed expert sign-off.",
+  "acceptanceCriteria": [
+    "Jurisdiction scored against the four explicit criteria from task 000; selection rationale documented",
+    "All sources vetted for reuse terms; provenance recorded per source (following task 009 process)",
+    "Duties & Roles and Ethics & Compliance content drafted and cited to primary sources",
+    "Full credentialed expert sign-off recorded before any content ships",
+    "Only started after M6 (ops runbook + maintenance rotation in place)"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-jurisdiction-000.json",
+    "tasks/public-official-guide-sources-009.json",
+    "tasks/public-official-guide-ops-022.json"
+  ],
+  "output": "A second-jurisdiction content pack (source provenance dataset + duties/ethics content documents) fully vetted, cited, and expert-signed-off, ready to load into the Imprint layer.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

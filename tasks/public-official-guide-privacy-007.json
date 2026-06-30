@@ -1,0 +1,40 @@
+{
+  "id": "public-official-guide-privacy-007",
+  "title": "Privacy-first constituent case model + retention windows/deletion SLA + records-law-hold exemption",
+  "project": "public-official-guide",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": [
+    "civic",
+    "privacy",
+    "software",
+    "data",
+    "legal"
+  ],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Constituent PII must be minimized by design. The casework model carries only service fields (issue, status, next step, outcome, minimal contact) -- no political/affiliation/profiling fields exist. PII is encrypted at rest. A default 24-month retention window auto-minimizes non-records data after case closure; constituent/official deletion requests are honored within a 30-day SLA. Records tagged recordsLawHold:true are exempt from auto-purge and dispositioned per the applicable records schedule. This task implements and tests both regimes before any real PII is stored.",
+  "objective": "Implement the privacy-first constituent case model with PII minimization, AES-256-GCM at-rest encryption, a default 24-month retention window with auto-purge, a 30-day constituent/official deletion SLA, and the recordsLawHold exemption -- with tests covering both regimes.",
+  "acceptanceCriteria": [
+    "Constituent case model fields limited to service needs: issue, status, next step, outcome, minimal contact; no political/affiliation/profiling fields exist in the schema",
+    "PII encrypted at rest; encryption key from environment, never committed",
+    "Default retention window (24 months from case closure) auto-minimizes/purges non-records data; tested with a fixture that advances the clock past the window",
+    "Constituent/official deletion path executes within a deletion SLA of 30 days; tested end-to-end",
+    "Records tagged recordsLawHold:true are exempt from auto-purge and from the deletion path; the retention job and deletion job both honor the flag; tested for both regimes",
+    "Privacy review sign-off and Expert (ethics/legal) sign-off recorded before merge"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/public-official-guide-data-005.json"
+  ],
+  "output": "A merged PR with the privacy-first constituent case model, PII minimization by schema, AES-256-GCM encryption, retention-window auto-purge, deletion SLA path, and recordsLawHold exemption -- all tested.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT-or-AGPL-3.0-TBD"
+}

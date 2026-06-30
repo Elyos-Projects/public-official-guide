@@ -1,0 +1,38 @@
+{
+  "id": "public-official-guide-sources-009",
+  "title": "Pilot jurisdiction source vetting: verify reuse terms + record provenance",
+  "project": "public-official-guide",
+  "type": "data",
+  "lane": "donated",
+  "priority": "high",
+  "domain": [
+    "civic",
+    "governance",
+    "legal",
+    "data"
+  ],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Before any jurisdiction-specific content ships, the reuse terms of every source must be verified and recorded. U.S. state statutes vary: primary law (statutes, constitutions, charters) is often public domain under the edict-of-government principle, but compiled codes with annotations may carry copyright. Only sources confirmed as reusable may be enabled. This task produces the provenance dataset that unlocks the M2 writing tasks (011, 013) and validates that the content corpus is legally safe to use.",
+  "objective": "For the selected pilot jurisdiction, verify the reuse terms of each planned source (statutes, charter/ordinances, ethics rules, open-meeting/records statutes, retention schedules, advisory opinions), record full provenance, and produce a dataset of approved sources with expert sign-off -- enabling the M2 content tasks.",
+  "acceptanceCriteria": [
+    "Reuse terms verified per source: public domain / edict-of-government / copyrighted-annotation and outcome (enabled / excluded) recorded",
+    "Provenance recorded per source: source name, jurisdiction, citation, retrieval date, URL, legal-status note",
+    "Only sources confirmed as reusable (primary law, no copyrighted-annotation lock-in) are marked enabled",
+    "Dataset committed as a structured file in the repo",
+    "Expert (ethics/legal) sign-off recorded before any source is marked enabled"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-jurisdiction-000.json",
+    "tasks/public-official-guide-provenance-008.json"
+  ],
+  "output": "A dataset of pilot-jurisdiction sources with verified reuse terms, full provenance records, enabled/excluded status, and recorded expert sign-off -- the dependency that unblocks public-official-guide-duties-011 and public-official-guide-ethics-013.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

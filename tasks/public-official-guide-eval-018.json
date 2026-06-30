@@ -1,0 +1,40 @@
+{
+  "id": "public-official-guide-eval-018",
+  "title": "Eval harness: memory-grounded+cited vs. blank-slate (accuracy/groundedness/fit) -- full version of eval-029",
+  "project": "public-official-guide",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": [
+    "civic",
+    "software",
+    "evaluation"
+  ],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "The full eval harness is the definitive proof of the grounded-vs-blank-slate thesis. It runs all core faculties (Duties & Roles, Ethics & Compliance, Briefings) in both grounded+cited mode and blank-slate mode on a comprehensive fixture set; an LLM judge scores accuracy, groundedness/citation, and fit. The headline metric is the delta: grounded+cited must clearly beat blank-slate or the thesis is flagged failing. This is an expansion of the minimal kill-gate from eval-029.",
+  "objective": "Build the full eval harness running core faculties grounded+cited vs. blank-slate on a comprehensive fixture set, with LLM-judge scoring of accuracy, groundedness/citation, and fit -- reporting the delta as the project's thesis proof.",
+  "acceptanceCriteria": [
+    "Runs Duties & Roles, Ethics & Compliance, and Meeting/Vote Briefing faculties in grounded+cited and blank-slate modes on a comprehensive fixture set (minimum 20 fixture scenarios)",
+    "LLM judge scores each pair on accuracy, groundedness/citation, and fit",
+    "Reports the delta: grounded+cited must clearly beat blank-slate on all three dimensions or the output flags the thesis as failing",
+    "If grounded+cited does not clearly beat blank-slate, the eval output blocks M5 and requires review",
+    "Expert (ethics/legal) reviews the accuracy dimension of the eval results on legal/duty content",
+    "CI green"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-eval-029.json",
+    "tasks/public-official-guide-duties-010.json",
+    "tasks/public-official-guide-ethics-012.json",
+    "tasks/public-official-guide-briefings-015.json"
+  ],
+  "output": "A merged PR with the full grounded-vs-blank-slate eval harness, LLM-judge scoring, delta report, and thesis-failing flag logic, establishing the definitive evidence for the project's core claim.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT-or-AGPL-3.0-TBD"
+}

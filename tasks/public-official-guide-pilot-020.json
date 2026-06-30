@@ -1,0 +1,41 @@
+{
+  "id": "public-official-guide-pilot-020",
+  "title": "Secure pilot office/steward + independent guardrail audit + expert sign-off of shipped content",
+  "project": "public-official-guide",
+  "type": "research",
+  "lane": "donated",
+  "priority": "high",
+  "domain": [
+    "civic",
+    "governance",
+    "public-service",
+    "legal"
+  ],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "The project is not shipped until a real office adopts it and uses it to fulfill a duty or improve a constituent outcome. This task secures the pilot office/official or sponsoring civic org, assigns a steward, arranges an independent guardrail audit, and confirms all shipped content has credentialed expert sign-off. Gated on the dated partner-acquisition plan: jurisdiction by 2026-08-31, expert by 2026-10-31, pilot office/steward by 2026-12-31. If no pilot is secured by 2027-03-31, the build-vs-mothball/pivot decision rule applies.",
+  "objective": "Secure a real pilot office/official or sponsoring civic organization (flipping verifiedNeed to true), assign a steward, arrange an independent government-ethics guardrail audit, and confirm all shipped duty/compliance content has recorded expert sign-off -- completing the M5 adoption gate.",
+  "acceptanceCriteria": [
+    "A real official/office or sponsoring civic org is secured as the pilot; steward assigned; verifiedNeed flips to true on all delivery-dependent tasks",
+    "Independent government-ethics reviewer audits guardrail refusal behavior; audit report recorded",
+    "All shipped duty/compliance content has recorded credentialed expert sign-off (version-scoped)",
+    "Privacy controls confirmed in force by the steward",
+    "Partner-acquisition milestones met: jurisdiction selected by 2026-08-31, credentialed expert by 2026-10-31, pilot office/steward by 2026-12-31",
+    "If no pilot is secured by 2027-03-31, the build-vs-mothball/pivot decision rule is applied and recorded in governance"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-duties-011.json",
+    "tasks/public-official-guide-ethics-013.json",
+    "tasks/public-official-guide-eval-018.json",
+    "tasks/public-official-guide-hardening-019.json"
+  ],
+  "output": "A document recording the secured pilot office/steward, the independent guardrail audit report, the content expert sign-off ledger, and the confirmed privacy-controls status -- the M5 adoption gate that enables public-official-guide-handoff-021.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

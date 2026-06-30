@@ -1,0 +1,40 @@
+{
+  "id": "public-official-guide-records-026",
+  "title": "Public-records request workflow helper (compliance-positive only)",
+  "project": "public-official-guide",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": [
+    "civic",
+    "governance",
+    "software",
+    "legal",
+    "public-service"
+  ],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Officials often receive public-records requests (FOIA, sunshine law) and need guidance on how to respond lawfully and promptly. A workflow helper that walks them through the response process, response window, and applicable exemptions (correctly, with primary-source citations) is a valuable public-service feature. This helper must be strictly compliance-positive: it helps fulfill requests, never evade, delay, or minimize them. Evasion requests are refused and redirected to the lawful process. Expert sign-off required before shipping.",
+  "objective": "Implement a public-records request workflow helper (mounted behind the guardrail layer) that guides an official through responding lawfully and promptly to a records request -- citing response windows, applicable exemptions, and the correct process -- while refusing any evasion, delay, or minimization framing.",
+  "acceptanceCriteria": [
+    "Guides the official through the records-request response workflow: acknowledgment, response window, applicable exemptions (with citations), and the correct process for withholding (if any)",
+    "All cited exemptions and response rules sourced to primary law from the approved source dataset",
+    "Refuses and redirects any request to evade, delay, or minimize a valid records request; refusal includes a cited lawful-process pointer",
+    "Mounted behind the guardrail layer; evasion requests never reach the workflow helper",
+    "Labeled informational not legal advice; routes to the clerk/counsel for binding determinations",
+    "Expert (ethics/legal) sign-off required before shipping"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-guardrails-003.json",
+    "tasks/public-official-guide-ethics-012.json"
+  ],
+  "output": "A merged PR implementing the public-records request workflow helper, compliance-positive and refusal-of-evasion enforced, behind the guardrail layer, with primary-source citations and expert sign-off.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT-or-AGPL-3.0-TBD"
+}

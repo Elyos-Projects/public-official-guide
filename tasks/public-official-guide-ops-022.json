@@ -1,0 +1,38 @@
+{
+  "id": "public-official-guide-ops-022",
+  "title": "Ops runbook + outcome dashboard + maintenance rotation + content review cadence",
+  "project": "public-official-guide",
+  "type": "maintenance",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": [
+    "civic",
+    "governance",
+    "software",
+    "public-service"
+  ],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "After the deed is shipped, the project must be sustainably maintained. The ops runbook covers deploy, incident response, source re-verification, and pilot support. The outcome dashboard tracks cases resolved, duty/compliance improvements, and guardrail-audit status -- not DAU. A named maintenance rotation owns the platform. A content review cadence ensures legal content is re-verified and re-signed-off when law changes. Expansion to a second jurisdiction follows a documented, expert-gated process.",
+  "objective": "Establish sustainable post-delivery operations: write the ops runbook, implement the outcome dashboard (civic metrics only), name the maintenance rotation, define the content review cadence (law-change re-verification + re-sign-off), and document the expert-gated second-jurisdiction expansion process.",
+  "acceptanceCriteria": [
+    "Ops runbook covers: deploy steps, incident response, source re-verification workflow, and pilot support contact",
+    "Outcome dashboard tracks: cases moved to resolution, duty/compliance improvements, guardrail-audit status -- not engagement metrics (DAU, sessions)",
+    "Named maintenance rotation documented (at least one named owner)",
+    "Content review cadence defined: law-change re-verification triggers, review intervals per source type, expert re-sign-off requirement for material legal updates",
+    "Process for adding a second jurisdiction is documented and requires expert-gating; not started until M6 is stable"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-handoff-021.json",
+    "tasks/public-official-guide-outcomes-017.json"
+  ],
+  "output": "A document (and any supporting dashboard code) covering the ops runbook, outcome dashboard, maintenance rotation, content review cadence, and expert-gated second-jurisdiction expansion process.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

@@ -1,0 +1,38 @@
+{
+  "id": "public-official-guide-briefing-016",
+  "title": "Daily duty-focused briefing (deadlines, meetings, open cases, disclosures)",
+  "project": "public-official-guide",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": [
+    "civic",
+    "governance",
+    "software",
+    "public-service"
+  ],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "Officials need a short, daily digest focused on their statutory duties: upcoming meetings, notice/records deadlines, open constituent cases, and pending disclosures. This daily briefing must be duty-focused only -- no campaign items, no optics items, no political agenda. It aggregates from the Imprint layer and casework faculty into a concise daily view, surfaced as a PWA-friendly page.",
+  "objective": "Implement the daily duty-focused briefing that aggregates upcoming meetings, notice/records deadlines, open constituent cases, and pending disclosures into a short, duty-only digest -- never including campaign or political agenda items.",
+  "acceptanceCriteria": [
+    "Surfaces: upcoming meetings (with notice deadlines), records/disclosure deadlines, open constituent cases with next-step reminders, and pending disclosure obligations",
+    "Contains no campaign, re-election, optics, or political agenda items; guardrail-enforced",
+    "Aggregates from the Imprint layer (task 006) and Casework faculty (task 014)",
+    "Designed for quick mobile review (PWA-friendly layout)",
+    "CI green"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-casework-014.json",
+    "tasks/public-official-guide-briefings-015.json"
+  ],
+  "output": "A merged PR implementing the daily duty-focused briefing aggregating meetings, deadlines, open cases, and pending disclosures into a mobile-friendly PWA page.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT-or-AGPL-3.0-TBD"
+}

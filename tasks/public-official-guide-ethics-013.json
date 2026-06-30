@@ -1,0 +1,39 @@
+{
+  "id": "public-official-guide-ethics-013",
+  "title": "Pilot jurisdiction ethics/compliance content + flag rules (cited, expert-reviewed)",
+  "project": "public-official-guide",
+  "type": "writing",
+  "lane": "donated",
+  "priority": "high",
+  "domain": [
+    "civic",
+    "governance",
+    "legal",
+    "ethics",
+    "public-service"
+  ],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "The Ethics & Compliance faculty (task 012) needs jurisdiction-specific content: COI rules, open-meeting/sunshine law, public-records/FOIA, gift rules, campaign-vs-official-resource separation, and records-retention schedules for the pilot jurisdiction. All sourced from the approved source dataset (task 009), non-partisan, and signed off by a credentialed expert. This content is HIGH risk-tier; expert sign-off is a hard gate before any of it ships.",
+  "objective": "Draft the pilot jurisdiction Ethics & Compliance content -- COI, open-meeting, public-records, gift, resource-separation, and records-retention rules with flag triggers -- fully cited to primary sources and reviewed and signed off by a credentialed expert before shipping.",
+  "acceptanceCriteria": [
+    "Covers COI, open-meeting/sunshine, public-records/FOIA, gift rules, campaign-vs-official-resource separation, and records-retention rules for the pilot jurisdiction",
+    "Every rule and flag trigger is cited to a primary source from the approved source dataset (task 009)",
+    "Flag rules specify the conditions under which the faculty surfaces a warning",
+    "Content is non-partisan, contains no political framing, and is labeled informational not legal advice",
+    "Credentialed expert (government-ethics professional and/or licensed attorney for the jurisdiction) reviews and signs off; sign-off recorded before content ships"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-sources-009.json",
+    "tasks/public-official-guide-ethics-012.json"
+  ],
+  "output": "A reviewed, expert-signed-off document containing the pilot jurisdiction Ethics & Compliance content (COI, open-meeting, public-records, gift, resource-separation, records-retention) with flag rules, fully cited to primary sources.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

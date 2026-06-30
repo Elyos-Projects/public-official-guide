@@ -1,0 +1,36 @@
+{
+  "id": "public-official-guide-accessibility-027",
+  "title": "Plain-language mode for constituents + officials",
+  "project": "public-official-guide",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": [
+    "civic",
+    "accessibility",
+    "public-service",
+    "software"
+  ],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "Statutory language is often dense and jargon-heavy. A plain-language mode that re-renders duty descriptions, ethics rules, and casework status in plain English (at a defined reading level) would benefit both officials absorbing their duties and constituents understanding their case status. Plain-language output remains informational-not-legal-advice and always cites the underlying primary source. This is a readability and literacy benefit.",
+  "objective": "Implement a plain-language mode that re-renders duty/ethics content and casework status in plain English at an accessible reading level, while preserving the underlying primary-source citations and informational-not-legal-advice labeling.",
+  "acceptanceCriteria": [
+    "Plain-language mode available as a toggle on duty/ethics content and casework status displays",
+    "Plain-language output targets a defined readability level (e.g., Flesch-Kincaid grade 8 or below)",
+    "Underlying primary-source citation is always preserved and displayed alongside the plain-language text",
+    "Informational-not-legal-advice label is preserved in plain-language mode",
+    "CI green"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "A merged PR adding a plain-language toggle to duty/ethics content and casework status displays, preserving source citations and informational labeling.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT-or-AGPL-3.0-TBD"
+}

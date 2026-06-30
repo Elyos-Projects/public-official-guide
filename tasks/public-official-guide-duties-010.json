@@ -1,0 +1,41 @@
+{
+  "id": "public-official-guide-duties-010",
+  "title": "Duties & Roles faculty (statutory duties/oath/powers, source-cited)",
+  "project": "public-official-guide",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": [
+    "civic",
+    "governance",
+    "software",
+    "legal"
+  ],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "The Duties & Roles faculty is one of the two core HIGH-tier faculties. It surfaces an office's statutory duties, oath, and powers -- always source-cited, always behind the guardrail layer. Every claim must carry a Source; a citation-coverage test enforces this. The faculty refuses out-of-scope framings (campaign/optics) and labels all output informational, not legal advice. It is mounted behind the guardrail layer from task 003 and uses the office-memory retrieval from task 006.",
+  "objective": "Implement the Duties & Roles faculty mounted behind the guardrail layer, returning only source-cited structured output of duties, oath, and powers; passing the citation-coverage test; refusing out-of-scope framings; and labeled informational not legal advice.",
+  "acceptanceCriteria": [
+    "Faculty is mounted behind the guardrail layer (task 003); refused-category requests never reach it",
+    "Returns structured output of duties, oath, and powers for the office; every claim carries an attached Source citation (citation-coverage test passes)",
+    "Uses Imprint office-memory retrieval (task 006) for grounded, cited context",
+    "Refuses out-of-scope framings (campaign/optics/electioneering); refusals include a lawful-alternative pointer",
+    "All output labeled informational, not legal advice",
+    "Expert (ethics/legal) sign-off required before any real jurisdiction content is enabled through this faculty",
+    "CI green including red-team assertions on this faculty surface"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-guardrails-003.json",
+    "tasks/public-official-guide-imprint-006.json",
+    "tasks/public-official-guide-provenance-008.json"
+  ],
+  "output": "A merged PR implementing the Duties & Roles faculty behind the guardrail layer, with source-cited structured output, citation-coverage enforcement, out-of-scope refusals, and informational labeling.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT-or-AGPL-3.0-TBD"
+}

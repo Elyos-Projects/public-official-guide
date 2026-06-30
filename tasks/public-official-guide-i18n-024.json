@@ -1,0 +1,36 @@
+{
+  "id": "public-official-guide-i18n-024",
+  "title": "Internationalization + community translations (constituent-facing materials)",
+  "project": "public-official-guide",
+  "type": "writing",
+  "lane": "donated",
+  "priority": "low",
+  "domain": [
+    "civic",
+    "public-service",
+    "accessibility",
+    "localization"
+  ],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "translation",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Constituent-facing materials (case status messages, informational disclaimers, how-to guides) may need translation to serve multilingual communities in the pilot jurisdiction. Translations are community-contributed and reviewed per language. No legal or duty/compliance content is translated without a credentialed expert reviewer for the target language; only informational/navigational content is in scope for community translation.",
+  "objective": "Internationalize the constituent-facing UI strings and produce community-reviewed translations of constituent-facing informational materials for the languages most needed in the pilot jurisdiction, reviewed per language before shipping.",
+  "acceptanceCriteria": [
+    "Constituent-facing UI strings externalized into translation files (i18n framework in place)",
+    "Translations for target language(s) cover: case status messages, informational disclaimers, how-to guides, and the informational-not-legal-advice label",
+    "Each language translation reviewed by a fluent community reviewer before shipping",
+    "No legal, duty, or compliance content is included in community-translated materials without a credentialed expert reviewer for the target language",
+    "Translation files are CC-BY-4.0 and attribution preserved"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "Internationalized constituent-facing materials with community-reviewed translations for the target language(s), covering UI strings, informational disclaimers, and how-to guides -- not legal or duty content.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

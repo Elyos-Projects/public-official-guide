@@ -1,0 +1,39 @@
+{
+  "id": "public-official-guide-export-028",
+  "title": "Export an office duty + compliance handbook (CC-BY)",
+  "project": "public-official-guide",
+  "type": "writing",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": [
+    "civic",
+    "governance",
+    "legal",
+    "public-service"
+  ],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "The duty/compliance content in the tool -- once expert-signed-off -- is valuable as a standalone reference document that an office can print, share, or distribute. An export feature generates a structured handbook (duties, ethics/compliance rules, records obligations) from the cited content, licensed CC-BY-4.0. Because this is derived from HIGH-tier legal/ethics content, it requires the same expert sign-off as the underlying content and may not ship without it.",
+  "objective": "Implement an export feature that generates a printable/shareable office duty + compliance handbook from the expert-signed-off cited content, licensed CC-BY-4.0, with attribution to primary sources preserved -- requiring the same expert sign-off as the underlying content.",
+  "acceptanceCriteria": [
+    "Generates a structured handbook covering duties, oath/powers, ethics/compliance rules, and records obligations for the pilot jurisdiction",
+    "All content cited to primary sources; attribution preserved per CC-BY-4.0",
+    "Export is derived only from expert-signed-off content versions; may not include any content without recorded sign-off",
+    "Output labeled informational not legal advice; routes to counsel/ethics board for binding determinations",
+    "Expert (ethics/legal) sign-off on the exported handbook before it is made available",
+    "Output in a portable format (PDF and/or Markdown)"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-duties-011.json",
+    "tasks/public-official-guide-ethics-013.json"
+  ],
+  "output": "A feature that exports an office duty + compliance handbook from the expert-signed-off cited content, in PDF/Markdown, CC-BY-4.0, with expert sign-off recorded.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

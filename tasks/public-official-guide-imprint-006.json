@@ -1,0 +1,38 @@
+{
+  "id": "public-official-guide-imprint-006",
+  "title": "Imprint office-memory models (Duties/Sources/Decisions/Meetings/Notes) + cited vector retrieval",
+  "project": "public-official-guide",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": [
+    "civic",
+    "governance",
+    "software",
+    "data"
+  ],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "The Imprint layer is the office memory: it stores the working memory of the office -- duties, sources, decisions, meetings, and notes -- so faculty answers are grounded in cited, factual context rather than blank-slate LLM output. Entities: Duty, Source (citation + provenance), Decision/Vote, Meeting/Event, and Note -- all tenant-scoped, sensitive fields encrypted. Retrieval via pgvector cosine similarity with keyword fallback assembles a cited context block that every faculty answer must carry. This is the foundation of the grounded-vs-blank-slate thesis.",
+  "objective": "Implement the Imprint office-memory data layer with Duty, Source, Decision/Vote, Meeting/Event, and Note models (1536-dim embeddings via pgvector), cosine retrieval with keyword fallback, and a cited-context-block assembler -- tested on fixtures.",
+  "acceptanceCriteria": [
+    "Duty, Source (citation + provenance), Decision/Vote, Meeting/Event, and Note models implemented with 1536-dim vector embeddings",
+    "pgvector cosine retrieval with keyword fallback returns relevant records for fixture queries",
+    "Retrieval assembles a cited context block (each item carries its Source citation); tested on a fixture set",
+    "All rows tenant-scoped; sensitive fields encrypted per task 005 baseline",
+    "Unit tests cover retrieval accuracy on fixtures",
+    "CI green"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-data-005.json"
+  ],
+  "output": "A merged PR implementing the Imprint office-memory layer with all five models, pgvector cosine retrieval, keyword fallback, cited-context-block assembly, and fixture tests.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT-or-AGPL-3.0-TBD"
+}
