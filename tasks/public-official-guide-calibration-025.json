@@ -1,0 +1,35 @@
+{
+  "id": "public-official-guide-calibration-025",
+  "title": "Optional calibration/predictions for duty-relevant forecasts",
+  "project": "public-official-guide",
+  "type": "code",
+  "lane": "donated",
+  "priority": "low",
+  "domain": [
+    "civic",
+    "governance",
+    "software"
+  ],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Ofelia includes calibrated predictions as a personal-advantage feature. Public-Official-Guide could offer a reframed version: calibration of the official's own predictions about duty-relevant matters (e.g., how often does this type of variance get appealed, does this budget estimate typically hold) -- as honest self-assessment and service follow-through, not political-outcome optimization. This is an open question in the project plan; it may not be core to fiduciary duty. This task is optional and lower priority than the core faculties.",
+  "objective": "If the project governance decides calibration is in scope, implement optional duty-relevant prediction calibration (honest self-assessment for the official, not political-outcome optimization) as a low-priority add-on behind the guardrail layer.",
+  "acceptanceCriteria": [
+    "Calibration tracks only duty-relevant predictions (civic outcomes, service estimates) -- not political or electoral outcomes",
+    "Framed as honest self-assessment and service follow-through; not advantage-optimization",
+    "Mounted behind the guardrail layer; political outcome prediction is refused",
+    "Clearly optional and disableable; does not gate any core faculty",
+    "CI green"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md"
+  ],
+  "output": "A merged PR adding optional duty-relevant prediction calibration behind the guardrail layer, framed as honest self-assessment, disableable, and not blocking any core faculty.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT-or-AGPL-3.0-TBD"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "public-official-guide-briefings-015",
+  "title": "Meeting/Vote Briefing generator (cited, balanced, options+tradeoffs, no political recs)",
+  "project": "public-official-guide",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": [
+    "civic",
+    "governance",
+    "software",
+    "public-service"
+  ],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Meeting and vote briefings must inform the official's judgment, not substitute for it or optimize for political outcomes. Briefings are balanced and cited: the question, the applicable rules (from ethics/duties faculties), options, and tradeoffs. The faculty surfaces relevant COI/ethics flags for the matter. It explicitly refuses framings asking for the winning political move or partisan recommendations. Mounted behind the guardrail layer.",
+  "objective": "Implement the Meeting/Vote Briefing generator behind the guardrail layer, producing balanced, cited briefings (question + applicable rules + options + tradeoffs) that surface COI/ethics flags and refuse political-recommendation framings.",
+  "acceptanceCriteria": [
+    "Generates structured briefings with: the question/matter, applicable rules (cited from duties/ethics faculties), options, tradeoffs -- to inform, not replace, the official's judgment",
+    "Surfaces relevant ethics/COI flags for the matter being briefed",
+    "Does not produce a winning political move or partisan recommendation; refuses such framings with a lawful-alternative pointer",
+    "Every applicable rule cited to a primary source (citation-coverage test passes for briefing output)",
+    "Mounted behind the guardrail layer (task 003)",
+    "CI green including red-team assertions on political-recommendation refusals"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-guardrails-003.json",
+    "tasks/public-official-guide-duties-010.json",
+    "tasks/public-official-guide-ethics-012.json"
+  ],
+  "output": "A merged PR implementing the Meeting/Vote Briefing generator with balanced, cited output (question + rules + options + tradeoffs), COI/ethics flag surfacing, and refusal of political-recommendation framings.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT-or-AGPL-3.0-TBD"
+}

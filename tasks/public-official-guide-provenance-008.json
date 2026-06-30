@@ -1,0 +1,39 @@
+{
+  "id": "public-official-guide-provenance-008",
+  "title": "Source/provenance + citation-coverage enforcement (no source, no claim) + staleness fail-safe",
+  "project": "public-official-guide",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": [
+    "civic",
+    "governance",
+    "software",
+    "data",
+    "legal"
+  ],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Every duty/compliance claim must be backed by a Source record with citation + provenance. A citation-coverage test enforces the no-source-no-claim rule. Each Source carries lastVerified and validUntil (derived from per-source-type review intervals). At runtime a claim past validUntil is auto-flagged or withheld and routed to the re-verification queue; a staleness test asserts no claim serves as current past its window. This makes stale content a visible, gated event rather than a silent error.",
+  "objective": "Implement the Source/provenance model with citation + provenance fields, enforce the no-source-no-claim rule via a citation-coverage test, and build the staleness fail-safe (lastVerified/validUntil auto-flag/withhold + re-verification queue routing) -- tested on fixtures.",
+  "acceptanceCriteria": [
+    "Source model carries: citation, jurisdiction, URL, retrieval date, legal-status note, lastVerified, validUntil (derived from per-source-type review interval)",
+    "Citation-coverage test asserts that no claim surfaces without an attached Source; a missing Source is a test failure",
+    "At runtime a claim whose backing Source is past validUntil is auto-flagged (informational surfaces) or withheld (HIGH-severity surfaces) and routed to the re-verification queue; tested with clock-advanced fixtures",
+    "A staleness test asserts no claim serves as current past its validUntil window",
+    "Re-verification and expert re-sign-off writes a fresh lastVerified/validUntil; a stale source cannot resume normal service without re-sign-off",
+    "CI green"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-imprint-006.json"
+  ],
+  "output": "A merged PR with the Source/provenance model, citation-coverage enforcement test, staleness fail-safe (auto-flag/withhold + re-verification queue), and fixture tests for both regimes.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT-or-AGPL-3.0-TBD"
+}

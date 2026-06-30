@@ -1,0 +1,41 @@
+{
+  "id": "public-official-guide-hardening-019",
+  "title": "Hardening: expanded red-team, WCAG 2.2 AA, PWA, deletion/retention verification + pilot runbook",
+  "project": "public-official-guide",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": [
+    "civic",
+    "software",
+    "accessibility",
+    "safety",
+    "privacy"
+  ],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Before a real official uses the tool, it must be hardened: expanded misuse red-team still passing 100%; core flows meeting WCAG 2.2 AA; PWA working offline-friendly on mobile (the target audience); deletion/retention verified end-to-end; a pilot onboarding runbook ready. This task is the last engineering gate before M5 pilot adoption.",
+  "objective": "Harden the tool for a real pilot user: expand the red-team suite (still 100% refused), verify WCAG 2.2 AA accessibility on core flows, confirm PWA offline-friendly behavior, verify deletion/retention end-to-end, and write the pilot onboarding runbook.",
+  "acceptanceCriteria": [
+    "Expanded misuse red-team suite still reports 100% refused/redirected; injection attempts covered; suite size >= previous version",
+    "Core flows (duties lookup, ethics flag, casework entry, briefing generation, daily briefing) meet WCAG 2.2 AA as verified by automated tool and manual spot-check",
+    "PWA functions offline-friendly on mobile (service worker, offline fallback, installable)",
+    "Deletion/retention verified end-to-end: deletion SLA honored, auto-purge window honored, recordsLawHold exemption correct",
+    "Pilot onboarding runbook written (deploy steps, first-use flow, known limitations, escalation contacts)",
+    "Guardrail reviewer and Maintainer sign off"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-redteam-004.json",
+    "tasks/public-official-guide-casework-014.json",
+    "tasks/public-official-guide-briefing-016.json"
+  ],
+  "output": "A merged PR with an expanded red-team suite (100% refused), WCAG 2.2 AA core flows, PWA offline support, verified deletion/retention, and a pilot onboarding runbook.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT-or-AGPL-3.0-TBD"
+}

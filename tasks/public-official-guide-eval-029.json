@@ -1,0 +1,36 @@
+{
+  "id": "public-official-guide-eval-029",
+  "title": "Minimal grounded-vs-blank-slate eval as an early go/no-go kill-gate (handful of fixtures)",
+  "project": "public-official-guide",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": [
+    "civic",
+    "software",
+    "evaluation"
+  ],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "A full eval harness (public-official-guide-eval-018) runs in M4, but the grounded-vs-blank-slate thesis needs an early kill-gate at M1: a small fixture set that checks whether memory-grounded+cited output trends ahead of blank-slate output. If grounded+cited does not at least trend ahead on this small set, HIGH-tier content work (M2) pauses for review rather than waiting for M4 to discover the thesis is failing. This early gate is intentionally lightweight -- a handful of fixtures -- and re-run in M2 on real cited content.",
+  "objective": "Build a minimal grounded-vs-blank-slate eval on a small fixture set that runs the office-memory faculties in grounded+cited mode and blank-slate mode, scores the delta, and gates the M1 exit: if grounded+cited does not trend ahead, M2 content investment pauses.",
+  "acceptanceCriteria": [
+    "Runs the office-memory faculties grounded+cited vs. blank-slate on a small fixture set (minimum 5 fixture scenarios)",
+    "Reports the delta as a scored go/no-go: if grounded+cited does not at least trend ahead on accuracy and citation, the eval output explicitly flags a go/no-go HOLD",
+    "Integrated into the M1 definition of done: M2 content work does not begin if the eval flags HOLD",
+    "Designed to be re-run on real cited content in M2 (the same harness, more fixtures)",
+    "CI green"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-imprint-006.json"
+  ],
+  "output": "A merged PR with the minimal grounded-vs-blank-slate eval harness on a small fixture set, reporting a scored go/no-go delta to gate M2 content investment.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT-or-AGPL-3.0-TBD"
+}

@@ -1,0 +1,37 @@
+{
+  "id": "public-official-guide-handoff-021",
+  "title": "Pilot adoption: official uses the tool to fulfill a duty / improve a constituent outcome (recorded)",
+  "project": "public-official-guide",
+  "type": "maintenance",
+  "lane": "donated",
+  "priority": "high",
+  "domain": [
+    "civic",
+    "governance",
+    "public-service"
+  ],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "This is the deed itself: the project is not shipped until a real office actually uses it. The pilot official demonstrably uses the tool to fulfill a duty more completely or improve a constituent outcome; the outcome is recorded with the official's confirmation. Guardrails are independently verified during actual use. This closes the beneficiary loop and constitutes the project's Definition of Shipped.",
+  "objective": "Close the loop: the pilot official uses the tool in real casework or duty fulfillment, records at least one concrete constituent outcome or duty/compliance improvement with their confirmation, and the guardrails are verified to hold during actual use.",
+  "acceptanceCriteria": [
+    "The pilot official demonstrably uses the tool to fulfill a duty more completely or improve a constituent outcome; the use is documented with the official's confirmation",
+    "At least one concrete outcome is recorded: a constituent case resolved, a duty fulfilled, or a compliance improvement (e.g., a flagged COI disclosed, a records-retention gap fixed)",
+    "Guardrails are independently verified to hold during actual pilot use (no bypass observed; informational-not-legal-advice labeling upheld)",
+    "The outcome record is stored in-app under outcome tracking (task 017) and confirmed by the official",
+    "The Steward confirms handoff is complete and the tool is in active use by the pilot office"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-pilot-020.json",
+    "tasks/public-official-guide-outcomes-017.json"
+  ],
+  "output": "A document recording the pilot official's confirmed use of the tool, the concrete outcome(s) achieved (duty fulfilled / constituent case improved), and the guardrail-verification result during actual use -- constituting the project's Definition of Shipped.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

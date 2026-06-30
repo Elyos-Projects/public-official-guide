@@ -1,0 +1,39 @@
+{
+  "id": "public-official-guide-duties-011",
+  "title": "Pilot jurisdiction Duties & Roles content (cited, expert-reviewed)",
+  "project": "public-official-guide",
+  "type": "writing",
+  "lane": "donated",
+  "priority": "high",
+  "domain": [
+    "civic",
+    "governance",
+    "legal",
+    "public-service"
+  ],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "The Duties & Roles faculty (task 010) needs jurisdiction-specific content: a structured, primary-source-cited representation of the pilot jurisdiction office's statutory duties, oath, and powers. This content is HIGH risk-tier; it must be sourced to primary law from the approved source dataset (task 009) and reviewed and signed off by a credentialed expert before shipping. No content ships without expert sign-off.",
+  "objective": "Draft the pilot jurisdiction Duties & Roles content -- structured, primary-source-cited duties, oath, and powers -- sourced entirely from the approved source dataset and reviewed and signed off by a credentialed government-ethics expert before shipping.",
+  "acceptanceCriteria": [
+    "Every duty, oath, and power claim is cited to a primary source from the approved source dataset (task 009); no claim is unsourced",
+    "Structured format matches the Duties & Roles faculty (task 010) data model",
+    "Content is non-partisan; no political framing or optics language",
+    "Labeled informational, not legal advice throughout",
+    "Credentialed expert (government-ethics professional and/or licensed attorney for the jurisdiction) reviews and signs off; sign-off recorded before content ships",
+    "The minimal grounded-vs-blank-slate kill-gate (eval-029), re-run on this real cited content, still shows grounded+cited ahead -- otherwise M3 does not begin"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-sources-009.json",
+    "tasks/public-official-guide-duties-010.json"
+  ],
+  "output": "A reviewed, expert-signed-off document containing the pilot jurisdiction Duties & Roles content (duties, oath, powers) fully cited to primary sources, ready to load into the Imprint layer for the Duties & Roles faculty.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

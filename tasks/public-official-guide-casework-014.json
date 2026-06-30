@@ -1,0 +1,39 @@
+{
+  "id": "public-official-guide-casework-014",
+  "title": "Constituent Casework faculty (service-oriented, privacy-first)",
+  "project": "public-official-guide",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": [
+    "civic",
+    "public-service",
+    "software",
+    "privacy"
+  ],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Constituent casework tracking is a core service function of the office. The faculty tracks cases with service-only fields (issue, status, next step, outcome); it has no political/profiling/targeting fields or features by design. Constituent data is encrypted; retention and deletion are enforced per task 007. The guardrail layer (task 003) prohibits any non-service use of constituent data. The faculty is mounted behind the guardrail layer and the privacy controls established in task 007.",
+  "objective": "Implement the Constituent Casework faculty behind the guardrail layer, tracking cases with service-only fields, enforcing privacy controls from task 007, and guardrail-blocking any political/targeting/surveillance use of constituent data.",
+  "acceptanceCriteria": [
+    "Tracks constituent cases with service fields only: issue, status, next step, outcome, minimal contact; no political/affiliation/profiling/targeting fields exist",
+    "Constituent data is encrypted per task 007; retention and deletion enforced",
+    "Guardrail layer (task 003) blocks any attempt to use casework data for political purposes, targeting, or surveillance",
+    "Faculty is mounted behind the guardrail layer; refused-category uses never reach the casework data",
+    "Privacy review sign-off and Expert (ethics/legal) sign-off recorded before merge",
+    "CI green"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-guardrails-003.json",
+    "tasks/public-official-guide-privacy-007.json"
+  ],
+  "output": "A merged PR implementing the Constituent Casework faculty with service-only fields, privacy controls (encryption, retention, deletion), and guardrail-enforced prohibition on political/targeting use of constituent data.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT-or-AGPL-3.0-TBD"
+}

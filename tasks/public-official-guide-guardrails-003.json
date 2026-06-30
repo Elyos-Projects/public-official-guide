@@ -1,0 +1,43 @@
+{
+  "id": "public-official-guide-guardrails-003",
+  "title": "Guardrail policy layer: intent classifier + system policy + output screening",
+  "project": "public-official-guide",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": [
+    "civic",
+    "governance",
+    "public-service",
+    "ethics",
+    "software",
+    "safety"
+  ],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "The guardrail / public-duty policy layer is the first code item and a hard product requirement: a safety-critical subsystem, not a prompt suffix. It implements the three enforcement points specified in public-official-guide-guardrails-001: (1) an input intent classifier that tags requests against the public-duty policy taxonomy and blocks refused categories before they reach any faculty; (2) a PUBLIC_DUTY_SYSTEM charter injected server-side into every faculty prompt; (3) an independent output screening pass as defense-in-depth. This layer must be fail-closed (ambiguous intents default to refuse-and-explain), stateless with respect to conversational trust, injection-resistant, and logged without capturing sensitive content.",
+  "objective": "Implement the three-layer guardrail system specified in public-official-guide-guardrails-001: input intent classification (fail-closed, < 1% false-negative rate with 0 tolerance for evasion/surveillance categories), PUBLIC_DUTY_SYSTEM server-side injection, and independent output screening -- all gated by the red-team suite from public-official-guide-redteam-004.",
+  "acceptanceCriteria": [
+    "Refused intents are classified and blocked before reaching any faculty; the classifier is fail-closed (ambiguous/low-confidence defaults to refuse-and-explain with a lawful-alternative pointer)",
+    "PUBLIC_DUTY_SYSTEM charter is injected server-side into every faculty prompt and cannot be overridden by user or document content",
+    "Policy is re-evaluated per request (stateless w.r.t. accrued conversational trust)",
+    "Independent output screening (distinct logic from the input classifier) flags/blocks partisan/targeting/evasion leakage as defense-in-depth",
+    "Refusals return a public-duty explanation and a correct, cited lawful-alternative pointer where one exists",
+    "Refusals and flags are logged without storing sensitive content; no PII/secrets in logs",
+    "Red-team suite (public-official-guide-redteam-004) passes in CI before this PR merges",
+    "Reviewed and signed off by Guardrail reviewer and Expert (ethics/legal)"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/public-official-guide-guardrails-001.json"
+  ],
+  "output": "A merged PR implementing the three-layer guardrail subsystem (intent classifier + PUBLIC_DUTY_SYSTEM injection + output screening), fail-closed, injection-resistant, with refusal logging that omits sensitive content, and the red-team suite passing in CI.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT-or-AGPL-3.0-TBD"
+}

@@ -1,0 +1,39 @@
+{
+  "id": "public-official-guide-data-005",
+  "title": "Multi-tenant data model + AES-256-GCM at-rest encryption (Prisma/Postgres/pgvector)",
+  "project": "public-official-guide",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": [
+    "civic",
+    "software",
+    "data",
+    "privacy",
+    "infrastructure"
+  ],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "All constituent and office data must be strictly tenant-scoped and encrypted at rest before any feature stores real data. The data model uses Prisma + PostgreSQL + pgvector. Sensitive fields are encrypted with AES-256-GCM; encryption keys are never committed. The constituent schema must have no political/affiliation/profiling fields by design. This task establishes the tenant boundary and encryption baseline that all subsequent data tasks (006, 007, 008, etc.) build on.",
+  "objective": "Implement the multi-tenant Prisma schema with per-row office/official tenant scoping, AES-256-GCM at-rest encryption for sensitive fields, and cross-tenant isolation tests -- so all subsequent code tasks have a secure, tested data foundation.",
+  "acceptanceCriteria": [
+    "Every Prisma model row is scoped to an office/official tenant; cross-tenant isolation test passes (a query scoped to tenant A cannot return tenant B rows)",
+    "Sensitive content fields are encrypted at rest with AES-256-GCM; encryption key is loaded from environment, never committed",
+    "Constituent schema has no political/affiliation/profiling fields",
+    "pgvector extension configured; vector field present on models that will use embeddings (Duties, Sources, Notes)",
+    "Prisma migrations are clean and reproducible",
+    "CI runs the cross-tenant isolation tests on every PR"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A merged PR with the multi-tenant Prisma schema, AES-256-GCM encryption helpers, pgvector configuration, and a passing cross-tenant isolation test suite.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT-or-AGPL-3.0-TBD"
+}

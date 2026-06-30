@@ -1,0 +1,40 @@
+{
+  "id": "public-official-guide-redteam-004",
+  "title": "Adversarial misuse red-team suite wired into CI (build fails on bypass)",
+  "project": "public-official-guide",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": [
+    "civic",
+    "governance",
+    "safety",
+    "software",
+    "ethics"
+  ],
+  "riskTier": "high",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "The guardrail layer (public-official-guide-guardrails-003) must be adversarially tested: a regression that bypasses any refusal fails the build. The red-team suite is a first-class CI gate, not a documentation footnote. It must cover every refused category from the policy spec (public-official-guide-guardrails-001) with >= 8 cases each (multiple phrasings + injection attempts), plus insider-misuse vectors: multi-turn social engineering, benign-looking decomposition, and reframing/euphemism attacks. Suite size is non-decreasing; any new bypass is added as a regression case within one release.",
+  "objective": "Build and wire a CI adversarial red-team suite that covers every refused category from the guardrail policy spec with >= 8 cases each (multiple phrasings + injection attempts) plus insider-misuse categories, so a refusal bypass fails the build and the suite grows with the product.",
+  "acceptanceCriteria": [
+    "Covers every refused category from public-official-guide-guardrails-001 with >= 8 test cases each, using multiple phrasings and prompt-injection attempts",
+    "Includes insider-misuse categories: multi-turn social engineering, benign-looking decomposition (split refused task into individually innocuous sub-steps), and reframing/euphemism attacks",
+    "For evasion-category refusals: asserts each refusal emits a correct, cited lawful-process pointer; a missing or wrong redirect is a test failure",
+    "Wired into CI so a refusal bypass fails the build",
+    "Suite size is non-decreasing across versions (test enforces count >= previous count)",
+    "Reports refused/total at version N with a per-version changelog",
+    "Reviewed by Guardrail reviewer before merge"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "tasks/public-official-guide-guardrails-001.json"
+  ],
+  "output": "A merged PR adding the adversarial red-team suite to CI, covering all refused categories with >= 8 cases each plus insider-misuse vectors, with build-failing assertions on bypass and evasion-redirect coverage, and an initial refused/total report.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT-or-AGPL-3.0-TBD"
+}

@@ -1,0 +1,36 @@
+{
+  "id": "public-official-guide-jurisdiction-000",
+  "title": "Pilot jurisdiction selection (scored against explicit criteria) — gates M2–M6",
+  "project": "public-official-guide",
+  "type": "research",
+  "lane": "donated",
+  "priority": "high",
+  "domain": [
+    "civic",
+    "governance",
+    "public-service",
+    "legal"
+  ],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "Public-Official-Guide must be built against a real jurisdiction to produce valid, primary-source-cited content. The pilot jurisdiction decision is made in M0 and gates M2-M6: it determines the content corpus, source-reuse legality, and the reviewer profile. A dated decision rule is fixed: the jurisdiction must be selected by 2026-08-31. No jurisdiction is currently confirmed; the decision criteria are explicit and scored. The output of this task is the selection record (or a confirmed shortlist with a fixed decision deadline), which becomes a hard dependency for source vetting (009) and all M2 content tasks.",
+  "objective": "Score candidate jurisdictions against the four explicit selection criteria and record the chosen jurisdiction (or a confirmed shortlist with the 2026-08-31 decision deadline), with rationale, so M2-M6 content and source-reuse verification can proceed against the right corpus and reviewer profile.",
+  "acceptanceCriteria": [
+    "Scores candidate jurisdictions against all four explicit criteria: (1) statutes/regulations reusable under the edict-of-government doctrine with no copyrighted compiled-code/annotation lock-in; (2) high density of small, under-resourced offices; (3) an available credentialed reviewer (ethics professional / licensed attorney) for that jurisdiction; (4) manageable ethics-code complexity",
+    "Records the chosen jurisdiction or a scored shortlist plus the fixed decision deadline of 2026-08-31 with rationale for each criterion",
+    "The decision record becomes the dependency that unblocks public-official-guide-sources-009 and all M2 content tasks",
+    "Reviewed by Maintainer and flagged for Expert (ethics/legal) confirmation once a candidate is selected"
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "A scored jurisdiction-selection document recording the chosen pilot jurisdiction (or confirmed shortlist + decision deadline) with rationale against the four explicit criteria, suitable for use as the dependency anchor for M2-M6.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

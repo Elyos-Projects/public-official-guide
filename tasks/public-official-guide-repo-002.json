@@ -1,0 +1,37 @@
+{
+  "id": "public-official-guide-repo-002",
+  "title": "Monorepo + pnpm + Next.js/TS/ESM + CI (build/test/lint) skeleton",
+  "project": "public-official-guide",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": [
+    "civic",
+    "software",
+    "infrastructure"
+  ],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "Public-Official-Guide needs a working multi-tenant monorepo skeleton before any feature or content work can begin. The stack is TypeScript/ESM, Next.js 15 App Router, pnpm workspaces, Prisma/PostgreSQL/pgvector (added in task 005), Clerk for auth, and a CI pipeline (build/test/lint). This task creates the skeleton that all later code tasks merge into. Agent-neutral core: provider-specific code stays in adapters/. No secrets committed.",
+  "objective": "Bootstrap the monorepo with pnpm workspaces, Next.js 15 App Router, TypeScript/ESM, Clerk auth scaffolding, and a green CI pipeline (build + test + lint passing), so subsequent tasks have a known-good base to build on.",
+  "acceptanceCriteria": [
+    "pnpm monorepo with Next.js 15 App Router, TypeScript, ESM config committed and building without errors",
+    "CI pipeline (build + test + lint) is green on the PR",
+    "Clerk multi-tenant auth scaffolding present; every data row will be scoped to a tenant from the first commit",
+    "Agent-neutral LLM client stub in place (no vendor-specific code in core packages)",
+    "No secrets, tokens, or API keys committed; .env.example documents required variables",
+    "README documents how to run locally"
+  ],
+  "resources": [
+    "PLAN.md",
+    "CLAUDE.md",
+    "packages/schema/src/schemas.ts"
+  ],
+  "output": "A merged PR adding the monorepo skeleton with green CI, pnpm workspaces, Next.js 15 App Router, TypeScript/ESM, Clerk scaffolding, and an agent-neutral LLM client stub.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT-or-AGPL-3.0-TBD"
+}
